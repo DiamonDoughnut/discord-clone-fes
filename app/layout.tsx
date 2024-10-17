@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/providers/theme-provider";
 import { cn } from "@/lib/utils";
 import { ModalProvider } from "@/components/providers/modal-provider";
 import { SocketProvider } from "@/components/providers/socket-provider";
+import { QueryProvider } from "@/components/providers/query-provider";
 
 const font = Open_Sans({ subsets: ["latin"] });
 
@@ -20,23 +21,29 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en' suppressHydrationWarning>
+    <html
+      lang='en'
+      suppressHydrationWarning
+    >
       <ClerkProvider>
-        <body className={`${cn(
-          font.className,
-          'bg-white dark:bg-[#313338]'
-        )} antialiased`}>
+        <body
+          className={`${cn(
+            font.className,
+            "bg-white dark:bg-[#313338]"
+          )} antialiased`}
+        >
           <ThemeProvider
-            attribute="class"
-            defaultTheme="dark"
+            attribute='class'
+            defaultTheme='dark'
             enableSystem
-            storageKey="discord-clone-theme"
-            >
+            storageKey='discord-clone-theme'
+          >
             <SocketProvider>
-            
-            <ModalProvider />
-            {children}
-          </SocketProvider>
+              <QueryProvider>
+                <ModalProvider />
+                {children}
+              </QueryProvider>
+            </SocketProvider>
           </ThemeProvider>
         </body>
       </ClerkProvider>
