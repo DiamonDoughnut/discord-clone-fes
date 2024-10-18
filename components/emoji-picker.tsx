@@ -28,6 +28,7 @@ export const EmojiPicker = ({
                 sideOffset={40}
                 className='bg-transparent border-none shadow-none drop-shadow-none mb-16'
             >
+                {/* eslint-disable-next-line @typescript-eslint/no-explicit-any*/}
                 <Picker theme={resolvedTheme} data={data} onEmojiSelect={(emoji: any) => onChange(emoji.native)} />
             </PopoverContent>
         </Popover>
